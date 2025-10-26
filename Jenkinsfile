@@ -1,14 +1,13 @@
-pipeline{
+pipeline {
   agent any
   environment{
     PATH="$PATH:/opt/Maven-3.0.11/bin"
   }
-  stages{
+  stages {
    stage('GetCode'){
     steps{
-	 git'https://github.com/Mo-Adnan-Mo-Ayyub/Jenkins-webapp-deployment.git'
-	 }
-  }
+   git 'https://github.com/Mo-Adnan-Mo-Ayyub/Jenkins-webapp-deployment.git'
+   }
   }
   stage('Build'){
    steps{
@@ -18,8 +17,9 @@ pipeline{
   stage('SonarQube analysis'){
    steps{
     withSonarQubeEnv('sonar-server-10.6'){
-     sh"mvn soanr:sonar"
+     sh "mvn sonar:sonar"
   }
   }
   }
+}
 }

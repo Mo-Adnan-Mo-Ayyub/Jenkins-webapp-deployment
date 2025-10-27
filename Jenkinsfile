@@ -23,7 +23,7 @@ pipeline {
   }
   stage('Code Deploy'){
     steps{
-      sshagent(['Tomcat-server']) {
+      sshagent(['Tomcat']) {
         sh 'scp -o StrictHostKeyChecking=no target/jenkins-webapp-deployment.war ubuntu@54.237.99.232:/home/ubuntu/apache-tomcat-9.0.111/webapps'
 
     }
